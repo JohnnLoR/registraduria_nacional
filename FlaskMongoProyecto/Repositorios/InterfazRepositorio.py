@@ -1,4 +1,3 @@
-from turtle import update
 from bson import DBRef
 from bson.objectid import ObjectId
 from typing import TypeVar, Generic, List, get_origin, get_args
@@ -11,7 +10,7 @@ class InterfazRepositorio(Generic[T]):
     #Constructor de la Interfaz
     def __init__(self):
         self.db = dbase.dbConnection()
-        theClass = get_args(self.__origin_bases__[0])
+        theClass = get_args(self.__orig_bases__[0])
         self.collection = theClass[0].__name__.lower()
 
     #Traer el valor buscado
@@ -98,7 +97,8 @@ class InterfazRepositorio(Generic[T]):
     def delete(self, id):
         laColeccion = self.db[self.collection]
         cuenta = laColeccion.delete_one({"_id": ObjectId(id)}).deleted_count
-        return {"deleted_count": cuenta}
+        return cuenta
+        # return {"deleted_count": cuenta}
 
     #Convierte los objetos de la db a sus referencias
     def ObjectToDBRefs(self, item):

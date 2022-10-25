@@ -13,7 +13,7 @@ class PartidoControlador():
     #Crear Partido
     def create(self, infoPartido):
         nuevoPartido = Partido(infoPartido)
-        return self.repositorioPartido.save(nuevoPartido)
+        return {"El Partido se ha Registrado con Éxito": self.repositorioPartido.save(nuevoPartido)}
 
     #Información Partido Específico
     def show(self, id):
@@ -23,11 +23,11 @@ class PartidoControlador():
     #Actualizar Información de Partido
     def update(self, id, infoPartido):
         partidoActual = Partido(self.repositorioPartido.findById(id))
-        partidoActual.id = infoPartido["id"]
+        #partidoActual.id = infoPartido["id"]
         partidoActual.nombre = infoPartido["nombre"]
         partidoActual.lema = infoPartido["lema"]
-        return self.repositorioPartido.save(partidoActual)
+        return {"Los datos del Partido han sido Actualizados": self.repositorioPartido.save(partidoActual)}
 
     #Eliminar Partido
     def delete(self, id):
-        return self.repositorioPartido.delete(id)
+        return {"Los datos del Partido han sido Eliminados": self.repositorioPartido.delete(id)}
