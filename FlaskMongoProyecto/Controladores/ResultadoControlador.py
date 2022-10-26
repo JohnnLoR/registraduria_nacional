@@ -13,7 +13,7 @@ class ResultadoControlador():
         self.repositorioMesa = MesaRepositorio()
 
     def index(self):
-        self.repositorioResultado.findAll()
+        return self.repositorioResultado.findAll()
 
     def create(self, infoResultado, id_mesa, id_candidato):
         nuevoResultado = Resultado(infoResultado)
@@ -28,7 +28,8 @@ class ResultadoControlador():
         return elResultado.__dict__
 
     def update(self, id, infoResultado, id_mesa, id_candidato):
-        nuevoResultado = Resultado(infoResultado)
+        nuevoResultado = Resultado(self.repositorioResultado.findById(id)) #Agrego línea; pero sigue igual, no actualiza; sino que crea un documento nuevo
+        # nuevoResultado = Resultado(infoResultado)
         laMesa = Mesa(self.repositorioMesa.findById(id_mesa))
         elCandidato = Candidato(self.repositorioCandidato.findById(id_candidato))
         nuevoResultado.mesa = laMesa

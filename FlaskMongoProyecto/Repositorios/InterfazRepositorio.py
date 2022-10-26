@@ -90,7 +90,7 @@ class InterfazRepositorio(Generic[T]):
         delattr(item, "_id")
         item = item.__dict__
         updateItem = {"$set": item}
-        x = laColeccion.update_one({"_id": id}, updateItem)
+        x = laColeccion.update_one({"_id": _id}, updateItem) #Modifica id x _id para que tome el inicial linea 88
         return {"update_count": x.matched_count}
 
     #Borrar documento de la colección
@@ -103,7 +103,7 @@ class InterfazRepositorio(Generic[T]):
     #Convierte los objetos de la db a sus referencias
     def ObjectToDBRefs(self, item):
         nameCollection = item.__class__.__name__.lower()
-        return DBRef(nameCollection, ObjectId(item))
+        return DBRef(nameCollection, ObjectId(item._id))
 
 
     #Función que transforma las referencias
@@ -120,7 +120,7 @@ class InterfazRepositorio(Generic[T]):
     def save(self, item: T):
         laColeccion = self.db[self.collection]
         elId = ""
-        elItem = self.transformRefs(item)
+        item = self.transformRefs(item)
         if hasattr(item, "_id") and item._id != "":
             elId = item._id
             _id = ObjectId(elId)

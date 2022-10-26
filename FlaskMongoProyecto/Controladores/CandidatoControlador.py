@@ -6,7 +6,7 @@ from Modelos.Partido import Partido
 class CandidatoControlador():
     def __init__(self):
         self.repositorioCandidato = CandidatoRepositorio()
-        self.repositorioPartido = PartidoRepositorio
+        self.repositorioPartido = PartidoRepositorio()
 
     def index(self):
         return self.repositorioCandidato.findAll()

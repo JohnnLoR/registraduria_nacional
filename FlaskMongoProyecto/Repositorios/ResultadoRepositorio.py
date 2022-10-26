@@ -16,13 +16,15 @@ class ResultadoRepositorio(InterfazRepositorio[Resultado]):
     # Devuelve la Cédula más Reciente (Mayor)
     def getNumeroCedulaMayorCandidato(self):
         query1 = {
-            "$group": {
-                "_id":"$candidato",
-                "$max": {
-                    "$max":"$cedula"
-                },
-                "doc": {"$first":"$$ROOT"}
+                "$group": {
+                    "_id": "$candidato",
+                    "max": {
+                        "$max": "$cedula"
+                    },
+                    "doc": {
+                        "$first": "$$ROOT"
+                    }
+                }
             }
-        }
         pipeline = [query1]
         return self.queryAggregation(pipeline)
