@@ -156,7 +156,7 @@ def eliminarResultado(id):
     return jsonify(json)
 
 # Ver resultado mesa específica
-@app.route("/resultados/mesas/<string:id_mesa>", methods=["GET"])
+@app.route("/resultados/mesa/<string:id_mesa>", methods=["GET"])
 def inscritosEnMesa(id_mesa):
     json = miControladorResultado.getListarCandidatosMesa(id_mesa)
     return jsonify(json)

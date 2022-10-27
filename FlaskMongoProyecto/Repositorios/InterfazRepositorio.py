@@ -101,7 +101,7 @@ class InterfazRepositorio(Generic[T]):
         # return {"deleted_count": cuenta}
 
     #Convierte los objetos de la db a sus referencias
-    def ObjectToDBRefs(self, item):
+    def ObjectToDBRefs(self, item: T):
         nameCollection = item.__class__.__name__.lower()
         return DBRef(nameCollection, ObjectId(item._id))
 
