@@ -10,7 +10,7 @@ class MesaControlador():
 
     def create(self, infoMesa):
         nuevaMesa = Mesa(infoMesa)
-        return self.repositorioMesa.save(nuevaMesa)
+        return {"La Mesa se ha Registrado con Éxito": self.repositorioMesa.save(nuevaMesa)}
 
     def show(self, id):
         laMesa = Mesa(self.repositorioMesa.findById(id))
@@ -20,7 +20,7 @@ class MesaControlador():
         mesaActual = Mesa(self.repositorioMesa.findById(id))
         mesaActual.numero = infoMesa["numero"]
         mesaActual.cantidad_inscritos = infoMesa["cantidad_inscritos"]
-        return self.repositorioMesa.save(mesaActual)
+        return {"Los datos de la Mesa han sido Actualizados": self.repositorioMesa.save(mesaActual)}
 
     def delete(self, id):
-        return self.repositorioMesa.delete(id)
+        return {"Los datos de la Mesa han sido Eliminados": self.repositorioMesa.delete(id)}

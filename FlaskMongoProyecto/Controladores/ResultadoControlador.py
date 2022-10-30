@@ -21,7 +21,7 @@ class ResultadoControlador():
         elCandidato = Candidato(self.repositorioCandidato.findById(id_candidato))
         nuevoResultado.mesa = laMesa
         nuevoResultado.candidato = elCandidato
-        return self.repositorioResultado.save(nuevoResultado)
+        return {"El Resultado se ha Añadido Satisfactoriamente": self.repositorioResultado.save(nuevoResultado)}
 
     def show(self, id):
         elResultado = Resultado(self.repositorioResultado.findById(id))
@@ -34,10 +34,10 @@ class ResultadoControlador():
         elCandidato = Candidato(self.repositorioCandidato.findById(id_candidato))
         nuevoResultado.mesa = laMesa
         nuevoResultado.candidato = elCandidato
-        return self.repositorioResultado.save(nuevoResultado)
+        return {"Los datos del Resultando han sido Actualizados": self.repositorioResultado.save(nuevoResultado)}
 
     def delete(self, id):
-        return self.repositorioResultado.delete(id)
+        return {"Los datos del Resultado han sido Eliminados": self.repositorioResultado.delete(id)}
 
     def getListarCandidatosMesa(self, id_mesa):
         return self.repositorioResultado.getListadoCandidatosInstritosMesa(id_mesa)
