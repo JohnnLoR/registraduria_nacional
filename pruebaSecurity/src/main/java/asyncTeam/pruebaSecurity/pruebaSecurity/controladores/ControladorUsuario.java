@@ -48,7 +48,7 @@ public class ControladorUsuario {
         if (usuarioActual != null) {
             usuarioActual.setSeudonimo(infoUsuario.getSeudonimo());
             usuarioActual.setCorreo(infoUsuario.getCorreo());
-            usuarioActual.setContrasena(infoUsuario.getContrasena());
+            usuarioActual.setContrasena(convertirSHA256(infoUsuario.getContrasena()));
             return miRepositorioUsuario.save(usuarioActual);
         } else {
             return null;
@@ -96,7 +96,7 @@ public class ControladorUsuario {
         byte[] hash = md.digest(password.getBytes());
         StringBuffer sb = new StringBuffer();
         for (byte b: hash) {
-            sb.append(String.format("%20x, b"));
+            sb.append(String.format("%20x", b));
         }
         return sb.toString();
     }
@@ -104,6 +104,7 @@ public class ControladorUsuario {
     /**
      * Validar el ingreso de algún Usuario
      */
+    @PostMapping("/validar")
     public Usuario validate(@RequestBody Usuario infoUsuario, final HttpServletResponse response) throws IOException {
         Usuario usuarioActual = miRepositorioUsuario.getUserByMail(infoUsuario.getCorreo());
         if (usuarioActual != null && usuarioActual.getContrasena().equals(convertirSHA256(infoUsuario.getContrasena()))) {
