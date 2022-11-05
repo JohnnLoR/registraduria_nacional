@@ -125,6 +125,11 @@ def eliminarMesa(id):
     json = miControladorMesa.delete(id)
     return jsonify(json)
 
+@app.route("/mesas/mayor-inscritos", methods=['GET'])
+def getMayorInscritos():
+    json = miControladorMesa.mayorCantidadInscritosEnMesas()
+    return jsonify(json)
+
 #####################################
 ####     EndPoints Resultados    ####
 #####################################
@@ -167,10 +172,16 @@ def inscritoEnMesas(id_candidato):
     json = miControladorResultado.getListarMesasDeInscripcionCandidato(id_candidato)
     return jsonify(json)
 
-# Buscar cédula
-@app.route("/resultados/documento", methods=["GET"])
-def getMaxDocument():
-    json = miControladorResultado.getMayorCedula()
+# Contar Votos
+@app.route("/resultados/votos", methods=["GET"])
+def getVoteCount():
+    json = miControladorResultado.getConteoVotos()
+    return jsonify(json)
+
+# Candidato Más Votado
+@app.route("/resultados/ganador", methods=["GET"])
+def getWinner():
+    json = miControladorResultado.getCandidatoMayorVotado()
     return jsonify(json)
 
 

@@ -14,12 +14,12 @@ class ResultadoRepositorio(InterfazRepositorio[Resultado]):
         return self.query(theQuery)
 
     # Devuelve la Cédula más Reciente (Mayor)
-    def getNumeroCedulaMayorCandidato(self):
+    def getConteoVotosCandidato(self):
         query1 = {
                 "$group": {
                     "_id": "$candidato",
-                    "max": {
-                        "$max": "$cedula"
+                    "Total_votos_candidato": {
+                        "$sum": 1
                     },
                     "doc": {
                         "$first": "$$ROOT"
@@ -27,4 +27,27 @@ class ResultadoRepositorio(InterfazRepositorio[Resultado]):
                 }
             }
         pipeline = [query1]
+        return self.queryAggregation(pipeline)
+
+    def getCandidatoMasVotado(self):
+        query1 = {
+                "$group": {
+                    "_id": "$candidato",
+                    "Total_votos_candidato": {                        
+                        "$sum": 1,
+                    },
+                    "doc": {
+                        "$first": "$$ROOT"
+                    }
+                }
+            }
+        query2 = {
+                "$sort": {
+                    "Total_votos_candidato": -1
+                }
+            }
+        query3 = {
+                "$limit": 1
+            }
+        pipeline = [query1, query2, query3]
         return self.queryAggregation(pipeline)

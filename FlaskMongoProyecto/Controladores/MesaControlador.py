@@ -24,3 +24,6 @@ class MesaControlador():
 
     def delete(self, id):
         return {"Los datos de la Mesa han sido Eliminados": self.repositorioMesa.delete(id)}
+
+    def mayorCantidadInscritosEnMesas(self):
+        return self.repositorioMesa.getMayorInscritosEnMesa()
