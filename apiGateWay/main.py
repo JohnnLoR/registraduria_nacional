@@ -28,13 +28,74 @@ def create_token():
     response = requests.post(url, json = data, headers = headers)
     if response.status_code == 200:
         user = response.json()
-        expires = datetime.timedelta(seconds = 60*60*24) #Un día en segundos sec*min*dia
+        expires = datetime.timedelta(seconds=60 * 60*24) #Un día en segundos sec*min*dia
         access_token = create_access_token(identity = user, expires_delta = expires)
         return jsonify({"token": access_token, "user_id": user["_id"]})
     else:
         return jsonify({"Message": "Correo, Seudónimo o Contraseña Incorrecto. ¡Intenta de Nuevo!!!"}), 401
 
+###########################################
+#####  Implementación del Middleware  #####
+###########################################
+def limpiarURL(url):
+    partes = url.split("/")
+    for laParte in partes:
+        if re.search('\\d', laParte):
+            url = url.replace(laParte, "?")
+    return url
 
+def validarPermiso(endPoint, metodo, idRol):
+    url = dataConfig["url-security-backend"]+"/permisos-roles/validar-permiso/rol/"+str(idRol)
+    tienePermiso = False
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    body = { "url": endPoint, "metodo": metodo}
+    response = requests.get(url, json=body, headers=headers)
+    try:
+        data = response.json()
+        if("_id" in data):
+            tienePermiso = True
+    except:
+        pass
+    return tienePermiso
+
+@app.before_request
+def before_request_callback():
+    endPoint = limpiarURL(request.path)
+    excludeRoutes = ["/login", "/signIn"]
+    if excludeRoutes.__contains__(request.path):
+        print("Ruta excluída: ", request.path)
+        pass
+    elif verify_jwt_in_request():
+        usuario = get_jwt_identity()
+        if usuario["rol"] is not None:
+            tienePermiso = validarPermiso(endPoint, request.method, usuario["rol"]["_id"])
+            if not tienePermiso:
+                return jsonify({"Message": "Usuario, Rol o Método no Autorizado", "Message": "1Permiso Denegado" }), 401
+        else:
+            return jsonify({"Message": "Rol o Método no Autorizado", "Message": "2Permiso Denegado" }), 401
+
+###########################################
+#####         endPoints Mesas         #####
+###########################################
+@app.route("/mesas", methods = ['GET'])
+def getMesas():
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/mesas'
+    response = requests.get(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
+
+
+###########################################
+#####       endPoints Candidato       #####
+###########################################
+@app.route("/candidatos", methods = ['GET'])
+def getCandidatos():
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/candidatos'
+    response = requests.get(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
 
 
 ###########################################
