@@ -119,9 +119,17 @@ def deleteMesa(id):
     json = response.json()
     return jsonify(json)
 
+@app.route("/mesas/mayor-inscritos", methods = ['GET'])
+def getMesas():
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/mesas/mayor-inscritos'
+    response = requests.get(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
+
 
 ###########################################
-#####       endPoints Candidato       #####
+#####       endPoints Candidatos      #####
 ###########################################
 @app.route("/candidatos", methods = ['GET'])
 def getCandidatos():
@@ -166,8 +174,7 @@ def deleteCandidato(id):
     return jsonify(json)
 
 @app.route("/candidatos/<string:id_candidato>/partido/<string:id_partido>", methods = ['PUT'])
-def asignarPartidoCandidato(id_candidato, id_partido):
-    #data = request.get_json() # Permite tomar y utilizar los datos que llegan en el body
+def asignarPartidoCandidato(id_candidato, id_partido):    
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-results-backend"] + '/candidatos/' + id_candidato + '/partido/' + id_partido
     response = requests.put(url, headers=headers)
@@ -217,6 +224,86 @@ def deletePartidos(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-results-backend"] + '/partidos/' + id
     response = requests.delete(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
+
+
+###########################################
+#####       endPoints Resultados      #####
+###########################################
+@app.route("/resultados", methods = ['GET'])
+def getResuldatos():
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/resultados'
+    response = requests.get(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
+
+@app.route("/resultados/mesa/<string:id_mesa>/candidato/<string:id_candidato", methods = ['POST'])
+def postResuldato(id_mesa, id_candidato):    
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/resultados/mesa/' + id_mesa + "/candidato/" + id_candidato
+    response = requests.post(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
+
+@app.route("/resultados/<string:id>", methods = ['GET'])
+def getResuldato(id):
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/resultados/' + id
+    response = requests.get(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
+
+@app.route("/resultados/<string:id_resultado/mesa/<string:id_mesa/candidato/<string:id_candidato>", methods = ['PUT'])
+def putResuldato(id_resultado, id_mesa, id_candidato):    
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/resultados/' + id_resultado + "/mesa/" + id_mesa + "/candidato/" + id_candidato
+    response = requests.put(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
+
+@app.route("/resultados/<string:id>", methods = ['DELETE'])
+def deleteResuldato(id):
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/resultados/' + id
+    response = requests.delete(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
+
+# Obtener los Resultados de una Mesa Específica
+@app.route("/resultados/mesa/<string:id_mesa>", methods = ['GET'])
+def canditaosInscritosEnMesa(id_mesa):    
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/resultados/mesa/' + id_mesa
+    response = requests.get(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
+
+# Obtener los Candiatos Inscritos en Mesas
+@app.route("/resultados/mesas/<string:id_candidato>", methods = ['GET'])
+def candidatoinscritoEnMesas(id_candidato):    
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/resultados/mesas/' + id_candidato
+    response = requests.get(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
+
+# Contar votos Candidato
+@app.route("/resultados/votos", methods = ['GET'])
+def contarVotos():    
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/resultados/votos/'
+    response = requests.get(url, headers=headers)
+    json = response.json()
+    return jsonify(json)
+
+# Candidato más votado
+@app.route("/resultados/ganador", methods = ['GET'])
+def candidatoMasVotado():    
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    url = dataConfig["url-results-backend"] + '/resultados/ganador/'
+    response = requests.get(url, headers=headers)
     json = response.json()
     return jsonify(json)
 
