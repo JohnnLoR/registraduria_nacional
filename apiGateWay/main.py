@@ -7,6 +7,7 @@ import re
 import json
 
 import EndpointsResultados
+import EndpointsSeguridad
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -18,6 +19,11 @@ app.register_blueprint(EndpointsResultados.endpointsMesas)
 app.register_blueprint(EndpointsResultados.endpointsCandidatos)
 app.register_blueprint(EndpointsResultados.endpointsPartidos)
 app.register_blueprint(EndpointsResultados.endpointsResultados)
+
+app.register_blueprint(EndpointsSeguridad.endpointsUsuarios)
+app.register_blueprint(EndpointsSeguridad.endpointsRoles)
+app.register_blueprint(EndpointsSeguridad.endpointsPermisos)
+app.register_blueprint(EndpointsSeguridad.endpointsPermisosRoles)
 
 ###########################################
 ##### Implementación del Método Login #####
@@ -80,9 +86,9 @@ def before_request_callback():
         if usuario["rol"] is not None:
             tienePermiso = validarPermiso(endPoint, request.method, usuario["rol"]["_id"])
             if not tienePermiso:
-                return jsonify({"Message": "Usuario, Rol o Método no Autorizado", "Message": "1Permiso Denegado" }), 401
+                return jsonify({"Message": "Usuario, Rol o Método no Autorizado", "Message": "El Usuario o Rol No cuenta con los Permisos Necesarios para Realizar esta Operación" }), 401
         else:
-            return jsonify({"Message": "Rol o Método no Autorizado", "Message": "2Permiso Denegado" }), 401
+            return jsonify({"Message": "Rol o Método no Autorizado", "Message": "Permiso Denegado" }), 401
 
 ###########################################
 #####   TEST O PRUEBA DEL SERVICIO    #####
