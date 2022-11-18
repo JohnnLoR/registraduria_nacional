@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 import { Usuarios } from '../modelos/usuarios.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SeguridadService {
   elUsuario = new BehaviorSubject<Usuarios>(new Usuarios);
@@ -18,7 +18,7 @@ export class SeguridadService {
     return this.elUsuario.value;
   }
 
-  setUsuario(user:Usuarios) {
+  setUsuario(user: Usuarios) {
     this.elUsuario.next(user);
   }
 

@@ -7,23 +7,23 @@ import { SeguridadService } from '../../../servicios/seguridad.service';
 @Component({
   selector: 'ngx-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  correo: string="";
-  contrasena: string="";
+  correo: string = "";
+  contrasena: string =  "";
 
   constructor(private miServicioSeguridad: SeguridadService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  login():void{
-    console.log("aqui: "+this.correo+" contraseña "+this.contrasena)
-    let elUsuario:Usuarios={
-      correo:this.correo,
-      contrasena:this.contrasena
-    }
+  login(): void {
+    console.log("aqui: " + this.correo +" contraseña " + this.contrasena)
+    let elUsuario:Usuarios = {
+      correo: this.correo,
+      contrasena: this.contrasena,
+    };
     this.miServicioSeguridad.login(elUsuario).subscribe(
       data => {
         this.router.navigate(['pages/dashboard']);
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
           title: 'Error Login',
           text: error["error"]["message"],
           icon: 'error',
-          timer:5000
+          timer: 5000,
         });
       }
     );
