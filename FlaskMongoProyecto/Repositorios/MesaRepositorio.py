@@ -6,12 +6,12 @@ class MesaRepositorio(InterfazRepositorio[Mesa]):
     def getMayorInscritosEnMesa(self):
         query1 = {
             "$group": {
-                "_id": "$mesa",
+                "_id": "",
                 "max": {
                     "$max": "$cantidad_inscritos"
                 },
-                "doc": {
-                    "$first": "$$ROOT"
+                "Mesa": {
+                    "$max": "$$ROOT"
                 }
             }
         }
