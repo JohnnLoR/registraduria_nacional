@@ -9,11 +9,11 @@ import { CrearComponent } from './crear/crear.component';
 @NgModule({
   declarations: [
     ListarComponent,
-    CrearComponent
+    CrearComponent,
   ],
   imports: [
     CommonModule,
-    MesasRoutingModule
-  ]
+    MesasRoutingModule,
+  ],
 })
 export class MesasModule { }

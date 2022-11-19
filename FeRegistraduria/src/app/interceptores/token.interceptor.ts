@@ -20,8 +20,8 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.miServicioSeguridad.usuarioSesionActiva) {
       request = request.clone({
-        setHeaders: { Authorization: `Bearer ${this.miServicioSeguridad.usuarioSesionActiva.token}`
-      }
+        setHeaders: { Authorization: `Bearer ${this.miServicioSeguridad.usuarioSesionActiva.token}`,
+      },
       });
     }
     return next.handle(request).pipe(catchError((err: HttpErrorResponse) => {
@@ -29,7 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
         this.router.navigateByUrl('/pages/dashboard');
       }
       return throwError(err);
-    })
+    }),
     );
   }
 }

@@ -10,8 +10,8 @@ import { SeguridadService } from '../../../servicios/seguridad.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  correo: string = "";
-  contrasena: string =  "";
+  correo: string = '';
+  contrasena: string =  '';
 
   constructor(private miServicioSeguridad: SeguridadService, private router: Router) { }
 
@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    console.log("aqui: " + this.correo +" contraseña " + this.contrasena)
-    let elUsuario:Usuarios = {
+    console.log('aqui: ' + this.correo + ' contraseña ' + this.contrasena);
+    let elUsuario: Usuarios = {
       correo: this.correo,
       contrasena: this.contrasena,
     };
@@ -32,11 +32,11 @@ export class LoginComponent implements OnInit {
       error => {
           Swal.fire({
           title: 'Error Login',
-          text: error["error"]["message"],
+          text: error['error']['message'],
           icon: 'error',
           timer: 5000,
         });
-      }
+      },
     );
   }
 
