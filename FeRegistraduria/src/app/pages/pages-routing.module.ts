@@ -15,6 +15,10 @@ const routes: Routes = [{
       loadChildren: () => import('./seguridad/seguridad.module').then(m => m.SeguridadModule),
     },
     {
+      path: 'mesas',
+      loadChildren: () => import('./mesas/mesas.module').then(m => m.MesasModule),
+    },
+    {
       path: 'dashboard',
       component: ECommerceComponent,
     },
