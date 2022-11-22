@@ -19,6 +19,34 @@ const routes: Routes = [{
       loadChildren: () => import('./mesas/mesas.module').then(m => m.MesasModule),
     },
     {
+      path: 'partidos',
+      loadChildren: () => import('./partidos/partidos.module').then(m => m.PartidosModule),
+    },
+    {
+      path: 'candidatos',
+      loadChildren: () => import('./candidatos/candidatos.module').then(m => m.CandidatosModule),
+    },
+    {
+      path: 'resultados',
+      loadChildren: () => import('./resultados/resultados.module').then(m => m.ResultadosModule),
+    },
+    {
+      path: 'usuarios',
+      loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule),
+    },
+    {
+      path: 'roles',
+      loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule),
+    },
+    {
+      path: 'permisos',
+      loadChildren: () => import(`./permisos/permisos.module`).then(m => m.PermisosModule),
+    },
+    {
+      path: 'permisos-roles',
+      loadChildren: () => import(`./permisos-roles/permisos-roles.module`).then(m => m.PermisosRolesModule),
+    },
+    {
       path: 'dashboard',
       component: ECommerceComponent,
     },

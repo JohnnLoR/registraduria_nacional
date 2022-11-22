@@ -1,0 +1,46 @@
+<div class="col-lg-12">
+    <nb-card>
+        <nb-card-header *ngIf="modoCreacion">
+            Registrar Partido
+        </nb-card-header>
+        <nb-card-header *ngIf="!modoCreacion">
+            Actualizar Partido
+        </nb-card-header>
+        <nb-card-body>
+            <div class="row" *ngIf="!modoCreacion">
+                <div class="col-3">
+                    <label for="nombre">ID del Partido</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [disabled]="!modoCreacion" [(ngModel)]="elPartido._id">
+                    <p *ngIf="intentoEnvio && elPartido._id==''">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label for="nombre">Nombre del Partido</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [(ngModel)]="elPartido.nombre">
+                    <p *ngIf="intentoEnvio && elPartido.nombre==''">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label for="lema">Lema del Partido</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [(ngModel)]="elPartido.lema">
+                    <p *ngIf="intentoEnvio && elPartido.lema==''">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <button *ngIf="modoCreacion" class="btn btn-primary btn-block" (click)="agregar()">Crear</button>
+                <button *ngIf="!modoCreacion" class="btn btn-primary btn-block" (click)="editar()">Actualizar</button>
+            </div>            
+        </nb-card-body>
+    </nb-card>
+</div>
