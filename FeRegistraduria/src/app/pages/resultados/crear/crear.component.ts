@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Candidatos } from '../../../modelos/candidatos.model';
+import { Mesas } from '../../../modelos/mesas.model';
 import { Resultados } from '../../../modelos/resultados.model';
+import { CandidatosService } from '../../../servicios/candidatos.service';
+import { MesasService } from '../../../servicios/mesas.service';
 import { ResultadosService } from '../../../servicios/resultados.service';
 
 @Component({
@@ -10,6 +14,19 @@ import { ResultadosService } from '../../../servicios/resultados.service';
   styleUrls: ['./crear.component.scss']
 })
 export class CrearComponent implements OnInit {
+
+  mesas: Mesas[];
+  laMesa: Mesas = {
+    _id: '',
+    numero: 0,
+  }
+
+  candidatos: Candidatos[];
+  elCandidato: Candidatos = {
+    _id: '',
+    nombre: '',
+    apellido: '',
+  }
 
   modoCreacion: boolean = true;
   id_resultado: string = "";
@@ -20,8 +37,10 @@ export class CrearComponent implements OnInit {
   }
 
   constructor(private miServicioResultados: ResultadosService,
-    private rutaActiva: ActivatedRoute,
-    private router: Router) { }
+              private miServicioCandidatos: CandidatosService,
+              private miServicioMesas: MesasService,
+              private rutaActiva: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
     if (this.rutaActiva.snapshot.params.id_resultado) {
@@ -31,6 +50,9 @@ export class CrearComponent implements OnInit {
     } else {
       this.modoCreacion = true;
     }
+
+    this.listarCandidatos();
+    this.listarMesas();
   }
 
   getResultado(id: string) {
@@ -74,6 +96,20 @@ export class CrearComponent implements OnInit {
         } else {
           return true;
         }
+  }
+
+  listarCandidatos(): void {
+    this.miServicioCandidatos.listar().subscribe(data => {
+      this.candidatos = data;
+      // console.log(this.candidatos)
+    });
+  }
+
+  listarMesas(): void {
+    this.miServicioMesas.listar().subscribe(data => {
+      this.mesas = data;
+      // console.log(this.mesas)
+    });
   }
 
 }

@@ -44,14 +44,14 @@ export class CandidatoMesasComponent implements OnInit {
   candidatoMesas(id_candidato: string): void {
     this.miServicioReportes.candidatoMesas(id_candidato).subscribe(data => {
       this.resultados = data;
-      console.log(this.resultados)
+      // console.log(this.resultados)
     })
   }
 
   listar(): void {
     this.miServicioCandidatos.listar().subscribe(data => {
       this.candidatos = data;
-      console.log(this.candidatos)
+      // console.log(this.candidatos)
     });
   }
 

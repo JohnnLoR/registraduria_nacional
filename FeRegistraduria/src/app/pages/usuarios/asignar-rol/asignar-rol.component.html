@@ -4,7 +4,7 @@
             Asignar Rol a Usuario
         </nb-card-header>
         <nb-card-body>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-3">
                     <label for="_id">Id Usuario</label>
                 </div>
@@ -12,15 +12,37 @@
                     <input type="text" class="form-control" [(ngModel)]="elUsuario._id">
                     <p *ngIf="intentoEnvio && elUsuario._id==''">Requerido</p>
                 </div>
+            </div> -->
+            <div class="row">
+                <div class="col-3">
+                    <label for="_id">Usuario</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-control" [(ngModel)]="elUsuario._id">
+                        <option value="" selected disabled>Seleccionar Usuario</option>
+                        <option *ngFor="let usuario of usuarios" value="{{usuario._id}}">{{usuario.seudonimo}}</option>
+                    </select>
+                </div>
             </div>
             <br>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-3">
                     <label for="_id">Id Rol</label>
                 </div>
                 <div class="col-9">
                     <input type="text" class="form-control" [(ngModel)]="elUsuario.rol">
                     <p *ngIf="intentoEnvio && elUsuario.rol==''">Requerido</p>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-3">
+                    <label for="_id">Rol</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-control" [(ngModel)]="elUsuario.rol">
+                        <option value="" selected disabled>Seleccionar Rol</option>
+                        <option *ngFor="let rol of roles" value="{{rol._id}}">{{rol.nombre}}</option>
+                    </select>
                 </div>
             </div>
             <br>

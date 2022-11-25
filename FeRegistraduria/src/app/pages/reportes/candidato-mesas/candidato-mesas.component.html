@@ -15,10 +15,10 @@
             </div> -->
             <div class="row">                
                 <div class="col-3">
-                    <label for="_id">IdCandidato</label>
+                    <label for="_id">Id Candidato</label>
                 </div>
                 <div class="col-9">
-                    <select class="form-control" name="_id" id="_id"> <!-- [(ngModel)]="candidato._id" -->
+                    <select class="form-control" [(ngModel)]="elResultado._id"> 
                         <option value="0" selected disabled>Seleccionar Candidato</option>
                         <option *ngFor="let candidato of candidatos" value="{{candidato._id}}">{{candidato.nombre}}&nbsp;{{candidato.apellido}}</option>
                     </select>

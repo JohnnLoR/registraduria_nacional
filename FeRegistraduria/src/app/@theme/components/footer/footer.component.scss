@@ -8,18 +8,46 @@
   justify-content: space-between;
   align-items: center;
 
-  .socials {
-    font-size: 2rem;
+  // .socials {
+  //   font-size: 2rem;
 
-    a {
-      padding: 0.4rem;
-      color: nb-theme(text-hint-color);
-      transition: color ease-out 0.1s;
+  //   a {
+  //     padding: 0.4rem;
+  //     color: nb-theme(text-hint-color);
+  //     transition: color ease-out 0.1s;
 
-      &:hover {
-        color: nb-theme(text-basic-color);
-      }
-    }
+  //     &:hover {
+  //       color: nb-theme(text-basic-color);
+  //     }
+  //   }
+  // }
+
+  .created-by {
+    width: 50%;
+  }
+
+  .sponsors {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  img {
+    width: 15%;
+    padding: 0.4rem;
+  }
+
+  .MinTic {
+    width: 25%;
+  }
+
+  .UNAL {
+    width: 25%;
+  }
+
+  .RNac {
+    width: 35%;
   }
 
   @include media-breakpoint-down(is) {

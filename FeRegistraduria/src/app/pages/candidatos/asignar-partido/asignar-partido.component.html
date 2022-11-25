@@ -4,7 +4,7 @@
             Asignar Partido a Candidato
         </nb-card-header>
         <nb-card-body>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-3">
                     <label for="_id">Id Candidato</label>
                 </div>
@@ -12,15 +12,37 @@
                     <input type="text" class="form-control" [(ngModel)]="elCandidato._id">
                     <p *ngIf="intentoEnvio && elCandidato._id==''">Requerido</p>
                 </div>
+            </div> -->
+            <div class="row">
+                <div class="col-3">
+                    <label for="_id">Id Candidato</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-control" [(ngModel)]="elCandidato._id">
+                        <option value="" selected disabled>Seleccionar Candidato</option>
+                        <option *ngFor="let candidato of candidatos" value="{{candidato._id}}">{{candidato.nombre}}&nbsp;{{candidato.apellido}}</option>
+                    </select>                    
+                </div>
             </div>
             <br>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-3">
                     <label for="_id">Id Partido</label>
                 </div>
                 <div class="col-9">
                     <input type="text" class="form-control" [(ngModel)]="elCandidato.partido">
                     <p *ngIf="intentoEnvio && elCandidato.partido==''">Requerido</p>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-3">
+                    <label for="_id">Id Partido</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-control" [(ngModel)]="elCandidato.partido">
+                        <option value="" selected disabled>Seleccionar Partido</option>
+                        <option *ngFor="let partido of partidos" value="{{partido._id}}">{{partido.nombre}}</option>
+                    </select>
                 </div>
             </div>
             <br>

@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { PermisosRoles } from '../../../modelos/permisos-roles.model';
+import { Permisos } from '../../../modelos/permisos.model';
+import { Roles } from '../../../modelos/roles.model';
 import { PermisosRolesService } from '../../../servicios/permisos-roles.service';
+import { PermisosService } from '../../../servicios/permisos.service';
+import { RolesService } from '../../../servicios/roles.service';
 
 @Component({
   selector: 'ngx-crear',
@@ -10,6 +14,19 @@ import { PermisosRolesService } from '../../../servicios/permisos-roles.service'
   styleUrls: ['./crear.component.scss']
 })
 export class CrearComponent implements OnInit {
+
+  roles: Roles[];
+  elRol: Roles = {
+    _id: '',
+    nombre: '',
+  }
+
+  permisos: Permisos[];
+  elPermiso: Permisos = {
+    _id: '',
+    url: '',
+    metodo: '',
+  }
 
   modoCreacion: boolean = true;
   id_permisoRol: string = '';
@@ -20,6 +37,8 @@ export class CrearComponent implements OnInit {
   }
 
   constructor(private miServicioPermisosRoles: PermisosRolesService,
+              private miServicioRoles: RolesService,
+              private miServicioPermisos: PermisosService,
               private rutaActiva: ActivatedRoute,
               private router: Router) { }
 
@@ -31,6 +50,9 @@ export class CrearComponent implements OnInit {
     } else {
       this.modoCreacion = true;
     }
+
+    this.listarRoles();
+    this.listarPermisos();
   }
 
   getPermisoRol(id: string) {
@@ -74,6 +96,20 @@ export class CrearComponent implements OnInit {
         } else {
           return true;
         }
+  }
+
+  listarRoles(): void {
+    this.miServicioRoles.listar().subscribe(data => {
+      this.roles = data;
+      // console.log(this.roles)
+    });
+  }
+
+  listarPermisos(): void {
+    this.miServicioPermisos.listar().subscribe(data => {
+      this.permisos = data;
+      // console.log(this.permisos)
+    });
   }
 
 }

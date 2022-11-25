@@ -34,6 +34,7 @@ export class SeguridadService {
     let sesionActual = localStorage.getItem('sesion');
       let data: Usuarios = {
         _id: datosSesion.user_id,
+        correo: datosSesion.user_correo, /* Se agrega el correo a los datos del localStorage */
         token: datosSesion.token,
       };
       localStorage.setItem('sesion', JSON.stringify(data));

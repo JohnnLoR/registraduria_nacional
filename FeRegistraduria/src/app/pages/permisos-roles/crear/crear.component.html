@@ -17,7 +17,7 @@
                 </div>
             </div>
             <br>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-3">
                     <label for="rol">Rol</label>
                 </div>
@@ -25,15 +25,37 @@
                     <input type="text" class="form-control" [(ngModel)]="elPermisoRol.rol">
                     <p *ngIf="intentoEnvio && elPermisoRol.rol==''">Requerido</p>
                 </div>
+            </div> -->
+            <div class="row">
+                <div class="col-3">
+                    <label for="_id">Rol</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-control" [(ngModel)]="elPermisoRol.rol">
+                        <option value="" selected disabled>Seleccionar Rol</option>
+                        <option *ngFor="let rol of roles" value="{{rol._id}}">{{rol.nombre}}</option>
+                    </select>
+                </div>
             </div>
             <br>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-3">
                     <label for="permiso">Permiso</label>
                 </div>
                 <div class="col-9">
                     <input type="text" class="form-control" [(ngModel)]="elPermisoRol.permiso">
                     <p *ngIf="intentoEnvio && elPermisoRol.permiso==''">Requerido</p>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-3">
+                    <label for="_id">Permiso</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-control" [(ngModel)]="elPermisoRol.permiso">
+                        <option value="" selected disabled>Seleccionar Permiso</option>
+                        <option *ngFor="let permiso of permisos" value="{{permiso._id}}">{{permiso.url}}&nbsp;{{permiso.metodo}}</option>
+                    </select>
                 </div>
             </div>
             <br>

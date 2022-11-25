@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Resultados } from '../modelos/resultados.model';
 import { Candidatos } from '../modelos/candidatos.model';
+import { Mesas } from '../modelos/mesas.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,10 @@ export class ReportesService {
 
   listar(): Observable<Candidatos[]> {
     return this.http.get<Candidatos[]>(`${environment.url_gateway}/candidatos`);
+  }
+
+  listarMesas(): Observable<Mesas[]> {
+    return this.http.get<Mesas[]>(`${environment.url_gateway}/mesas`);
   }
 
   maxInscritos(): Observable<Resultados> {
