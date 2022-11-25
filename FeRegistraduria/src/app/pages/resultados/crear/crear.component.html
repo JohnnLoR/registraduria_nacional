@@ -19,21 +19,21 @@
             <br>
             <div class="row">
                 <div class="col-3">
-                    <label for="_id">Candidato</label>
+                    <label for="_id">Mesa</label>
                 </div>
                 <div class="col-9">
-                    <input type="text" class="form-control" [(ngModel)]="elResultado.candidato">
-                    <p *ngIf="intentoEnvio && elResultado.candidato==['nombre']">Requerido</p>
+                    <input type="text" class="form-control" [(ngModel)]="elResultado.mesa">
+                    <p *ngIf="intentoEnvio && elResultado.mesa==''">Requerido</p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-3">
-                    <label for="_id">Mesa</label>
+                    <label for="_id">Candidato</label>
                 </div>
                 <div class="col-9">
-                    <input type="text" class="form-control" [(ngModel)]="elResultado.mesa">
-                    <p *ngIf="intentoEnvio && elResultado.mesa==['numero']">Requerido</p>
+                    <input type="text" class="form-control" [(ngModel)]="elResultado.candidato">
+                    <p *ngIf="intentoEnvio && elResultado.candidato==''">Requerido</p>
                 </div>
             </div>
             <br>

@@ -31,6 +31,10 @@ const routes: Routes = [{
       loadChildren: () => import('./resultados/resultados.module').then(m => m.ResultadosModule),
     },
     {
+      path: 'reportes',
+      loadChildren: () => import('./reportes/reportes.module').then(m => m.ReportesModule),
+    },
+    {
       path: 'usuarios',
       loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule),
     },
@@ -106,7 +110,7 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'seguridad/login', /*Configura la ruta de inicio deseada; antes estaba en 'dashboard'*/
       pathMatch: 'full',
     },
     {

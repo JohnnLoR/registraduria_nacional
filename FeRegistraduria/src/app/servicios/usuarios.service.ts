@@ -30,4 +30,8 @@ export class UsuariosService {
   editar(id: string, elUsuario: Usuarios) {
     return this.http.put(`${environment.url_gateway}/usuarios/${id}`, elUsuario);
   }
+
+  asignarRol(id: string, id_rol: string, elUsuario: Usuarios) {
+    return this.http.put(`${environment.url_gateway}/usuarios/${id}/rol/${id_rol}`, elUsuario);
+  }
 }

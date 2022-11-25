@@ -1,0 +1,32 @@
+<div class="col-lg-12">
+    <nb-card>
+        <nb-card-header>
+            Asignar Rol a Usuario
+        </nb-card-header>
+        <nb-card-body>
+            <div class="row">
+                <div class="col-3">
+                    <label for="_id">Id Usuario</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [(ngModel)]="elUsuario._id">
+                    <p *ngIf="intentoEnvio && elUsuario._id==''">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label for="_id">Id Rol</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [(ngModel)]="elUsuario.rol">
+                    <p *ngIf="intentoEnvio && elUsuario.rol==''">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <button class="btn btn-primary btn-block" (click)="asignarRol()">Asignar Rol</button>
+            </div>
+        </nb-card-body>
+    </nb-card>
+</div>

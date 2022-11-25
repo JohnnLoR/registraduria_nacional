@@ -15,8 +15,8 @@ export class CrearComponent implements OnInit {
   id_mesa: string = '';
   intentoEnvio: boolean = false;
   laMesa: Mesas = {
-    numero: '',
-    cantidad_inscritos: '',
+    numero: 0,
+    cantidad_inscritos: 0,
   }
 
   constructor(private miServicioMesas: MesasService,
@@ -68,8 +68,8 @@ export class CrearComponent implements OnInit {
 
   validarDatosCompletos(): boolean {
     this.intentoEnvio = true;
-    if (this.laMesa.numero == '' ||
-        this.laMesa.cantidad_inscritos == '') {
+    if (this.laMesa.numero == 0 ||
+        this.laMesa.cantidad_inscritos == 0) {
         return false;
       } else {
         return true;

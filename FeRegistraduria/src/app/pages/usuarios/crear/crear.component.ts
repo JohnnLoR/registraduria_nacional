@@ -62,7 +62,7 @@ export class CrearComponent implements OnInit {
           'El Usuario ha sido Actualizado Exitósamente!!!',
           'success',
         )
-        this.router.navigate(['pages/estudiantes/listar']);
+        this.router.navigate(['pages/usuarios/listar']);
       });
     }
   }

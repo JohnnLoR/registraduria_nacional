@@ -9,13 +9,13 @@ const routes: Routes = [
     component: ListarComponent
   },
   {
-    path: 'crear', /* /rol/:id_rol/permiso/:id_permiso */
+    path: 'crear',
     component: CrearComponent
   },
   {
-    path: 'actualizar/:id_permisoRol', /*/rol/:id_rol/permiso/:id_permiso*/
+    path: 'actualizar/:id_permisoRol',
     component: CrearComponent
-  }
+  },
 ];
 
 @NgModule({

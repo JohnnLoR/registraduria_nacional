@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AsignarPartidoComponent } from './asignar-partido/asignar-partido.component';
 import { CrearComponent } from './crear/crear.component';
 import { ListarComponent } from './listar/listar.component';
 
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'actualizar/:id_candidato',
     component: CrearComponent
+  },
+  {
+    path: 'asignar-partido',
+    component: AsignarPartidoComponent
   },
 ];
 

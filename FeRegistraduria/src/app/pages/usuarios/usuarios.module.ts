@@ -6,12 +6,14 @@ import { ListarComponent } from './listar/listar.component';
 import { CrearComponent } from './crear/crear.component';
 import { NbCardModule } from '@nebular/theme';
 import { FormsModule } from '@angular/forms';
+import { AsignarRolComponent } from './asignar-rol/asignar-rol.component';
 
 
 @NgModule({
   declarations: [
     ListarComponent,
-    CrearComponent
+    CrearComponent,
+    AsignarRolComponent
   ],
   imports: [
     CommonModule,

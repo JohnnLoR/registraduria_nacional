@@ -19,21 +19,21 @@
             <br>
             <div class="row">
                 <div class="col-3">
-                    <label for="id_rol">Rol</label>
+                    <label for="rol">Rol</label>
                 </div>
                 <div class="col-9">
                     <input type="text" class="form-control" [(ngModel)]="elPermisoRol.rol">
-                    <p *ngIf="intentoEnvio && elPermisoRol.rol==['nombre']">Requerido</p>
+                    <p *ngIf="intentoEnvio && elPermisoRol.rol==''">Requerido</p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-3">
-                    <label for="id_permiso">Permiso</label>
+                    <label for="permiso">Permiso</label>
                 </div>
                 <div class="col-9">
                     <input type="text" class="form-control" [(ngModel)]="elPermisoRol.permiso">
-                    <p *ngIf="intentoEnvio && elPermisoRol.permiso==['url']">Requerido</p>
+                    <p *ngIf="intentoEnvio && elPermisoRol.permiso==''">Requerido</p>
                 </div>
             </div>
             <br>

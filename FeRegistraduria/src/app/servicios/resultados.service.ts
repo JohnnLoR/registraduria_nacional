@@ -25,11 +25,11 @@ export class ResultadosService {
     return this.http.get<Resultados>(`${environment.url_gateway}/resultados/${id}`);
   }
 
-  crear(elResultado: Resultados) {
-    return this.http.post(`${environment.url_gateway}/resultados`, elResultado);
+  crear(id_mesa: string, id_Candidato: string, elResultado: Resultados) {
+    return this.http.post(`${environment.url_gateway}/resultados/mesa/${id_mesa}/candidato/${id_Candidato}`, elResultado);
   }
 
-  editar(id: string, elResultado: Resultados) {
-    return this.http.put(`${environment.url_gateway}/resultados/${id}`, elResultado);
+  editar(id: string, id_mesa: string, id_Candidato: string, elResultado: Resultados) {
+    return this.http.put(`${environment.url_gateway}/resultados/${id}/mesa/${id_mesa}/candidato/${id_Candidato}`, elResultado);
   }
 }

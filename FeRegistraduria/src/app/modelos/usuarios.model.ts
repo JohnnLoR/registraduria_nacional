@@ -3,5 +3,6 @@ export class Usuarios {
     seudonimo?: string;
     correo?: string;
     contrasena?: string;
+    rol?: string;
     token?: string;
 }

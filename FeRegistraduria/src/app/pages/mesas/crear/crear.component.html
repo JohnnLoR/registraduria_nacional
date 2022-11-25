@@ -22,8 +22,8 @@
                     <label for="numero">Mesa Número</label>
                 </div>
                 <div class="col-9">
-                    <input type="text" class="form-control" [(ngModel)]="laMesa.numero">
-                    <p *ngIf="intentoEnvio && laMesa.numero==''">Requerido</p>
+                    <input type="number" class="form-control" [(ngModel)]="laMesa.numero">
+                    <p *ngIf="intentoEnvio && laMesa.numero==0">Requerido</p>
                 </div>
             </div>
             <br>
@@ -32,8 +32,8 @@
                     <label for="cantidad_inscritos">Cantidad de Inscritos</label>
                 </div>
                 <div class="col-9">
-                    <input type="text" class="form-control" [(ngModel)]="laMesa.cantidad_inscritos">
-                    <p *ngIf="intentoEnvio && laMesa.cantidad_inscritos==''">Requerido</p>
+                    <input type="number" class="form-control" [(ngModel)]="laMesa.cantidad_inscritos">
+                    <p *ngIf="intentoEnvio && laMesa.cantidad_inscritos==0">Requerido</p>
                 </div>
             </div>
             <br>

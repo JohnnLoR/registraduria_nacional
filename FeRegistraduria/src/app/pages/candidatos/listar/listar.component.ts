@@ -36,6 +36,11 @@ export class ListarComponent implements OnInit {
     this.router.navigate(['pages/candidatos/actualizar/' + id]);
   }
 
+  asignarPartido(): void {
+    console.log("Asignando Partido a Candidato")
+    this.router.navigate(['pages/candidatos/asignar-partido/']);
+  }
+
   eliminar(id: string): void {
     Swal.fire({
       title: 'Eliminar Candidato',

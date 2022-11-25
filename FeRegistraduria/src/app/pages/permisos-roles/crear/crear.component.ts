@@ -15,8 +15,8 @@ export class CrearComponent implements OnInit {
   id_permisoRol: string = '';
   intentoEnvio: boolean = false;
   elPermisoRol: PermisosRoles = {
-    rol: [],
-    permiso: [],
+    rol: '',
+    permiso: '',
   }
 
   constructor(private miServicioPermisosRoles: PermisosRolesService,
@@ -26,7 +26,7 @@ export class CrearComponent implements OnInit {
   ngOnInit(): void {
     if (this.rutaActiva.snapshot.params.id_permisoRol) {
       this.modoCreacion = false;
-      this.elPermisoRol = this.rutaActiva.snapshot.params.id_permisoRol;
+      this.id_permisoRol = this.rutaActiva.snapshot.params.id_permisoRol;
       this.getPermisoRol(this.id_permisoRol)
     } else {
       this.modoCreacion = true;
@@ -42,7 +42,7 @@ export class CrearComponent implements OnInit {
   agregar(): void {
     if (this.validarDatosCompletos()) {
       this.intentoEnvio = true;
-      this.miServicioPermisosRoles.crear(this.elPermisoRol).subscribe(data => {  /* , this.elPermisoRol.id_rol, this.elPermisoRol.id_permiso */
+      this.miServicioPermisosRoles.crear(this.elPermisoRol.rol, this.elPermisoRol.permiso, this.elPermisoRol).subscribe(data => {
         Swal.fire(
           'Creado!',
           'El Permiso Rol ha sido Creado Exitósamente!!!',
@@ -55,7 +55,7 @@ export class CrearComponent implements OnInit {
 
   editar(): void {
     if (this.validarDatosCompletos()) {
-      this.miServicioPermisosRoles.editar(this.elPermisoRol._id, this.elPermisoRol).subscribe(data => {  /*, this.elPermisoRol.id_rol, this.elPermisoRol. id_permiso*/
+      this.miServicioPermisosRoles.editar(this.elPermisoRol._id, this.elPermisoRol.rol, this.elPermisoRol.permiso, this.elPermisoRol).subscribe(data => {
         Swal.fire(
           'Actualizado!',
           'El PermisoRol ha sido Actualizado Exitósamente!!!',
@@ -68,8 +68,8 @@ export class CrearComponent implements OnInit {
 
   validarDatosCompletos(): boolean {
     this.intentoEnvio = true;
-    if (this.elPermisoRol.rol == Object ||
-        this.elPermisoRol.permiso == Object) {
+    if (this.elPermisoRol.rol == '' ||
+        this.elPermisoRol.permiso == '') {
           return false;
         } else {
           return true;

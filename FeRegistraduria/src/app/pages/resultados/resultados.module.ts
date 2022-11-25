@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     ListarComponent,
-    CrearComponent
+    CrearComponent,
   ],
   imports: [
     CommonModule,

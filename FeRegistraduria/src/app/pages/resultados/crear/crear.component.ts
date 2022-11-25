@@ -15,8 +15,8 @@ export class CrearComponent implements OnInit {
   id_resultado: string = "";
   intentoEnvio: boolean = false;
   elResultado: Resultados = {
-    candidato: [],
-    mesa: [],
+    candidato: '',
+    mesa: '',
   }
 
   constructor(private miServicioResultados: ResultadosService,
@@ -42,7 +42,7 @@ export class CrearComponent implements OnInit {
   agregar(): void {
     if (this.validarDatosCompletos()) {
       this.intentoEnvio = true;
-      this.miServicioResultados.crear(this.elResultado).subscribe(data => {
+      this.miServicioResultados.crear(this.elResultado.mesa, this.elResultado.candidato, this.elResultado).subscribe(data => {
         Swal.fire(
           'Creado!',
           'El Resultado se ha Registrado Exitósamente!!!',
@@ -55,7 +55,7 @@ export class CrearComponent implements OnInit {
 
   editar(): void {
     if (this.validarDatosCompletos()) {
-      this.miServicioResultados.editar(this.elResultado._id, this.elResultado).subscribe(data => {
+      this.miServicioResultados.editar(this.elResultado._id, this.elResultado.mesa, this.elResultado.candidato,  this.elResultado).subscribe(data => {
         Swal.fire(
           'Actualizado!',
           'Los Datos del Resultado han sido Actualizados Exitósamente',
@@ -68,8 +68,8 @@ export class CrearComponent implements OnInit {
 
   validarDatosCompletos(): boolean {
     this.intentoEnvio = true;
-    if (this.elResultado.candidato==Object ||
-        this.elResultado.mesa==Object) {
+    if (this.elResultado.candidato == '' ||
+        this.elResultado.mesa == '') {
           return false;
         } else {
           return true;

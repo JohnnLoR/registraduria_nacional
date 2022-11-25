@@ -1,0 +1,21 @@
+<div class="col-12">
+    <nb-card>
+        <nb-card-header>
+            Total Votos por Candidato
+        </nb-card-header>
+        <table class="table">
+            <tr>
+                <th *ngFor="let columnaActual of nombresColumnas">{{columnaActual}}</th>
+            </tr>
+            <ng-container *ngFor="let resultadoActual of resultados"> <!-- *ngFor="let resultadoCatual of elResultado" -->
+                <tr>
+                    <td>{{resultadoActual._id}}</td>
+                    <td>{{resultadoActual.doc.candidato.nombre}}</td>
+                    <td>{{resultadoActual.doc.candidato.apellido}}</td>
+                    <td>{{resultadoActual.doc.candidato.partido.nombre}}</td>
+                    <td>{{resultadoActual.Total_votos_candidato}}</td>
+                </tr>
+            </ng-container>
+        </table>
+    </nb-card>
+</div>

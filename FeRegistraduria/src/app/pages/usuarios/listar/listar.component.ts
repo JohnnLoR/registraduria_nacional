@@ -36,6 +36,11 @@ export class ListarComponent implements OnInit {
     this.router.navigate(['pages/usuarios/actualizar/' + id]);
   }
 
+  asignarRol(): void {
+    console.log("Asignano Rol a Usuario")
+    this.router.navigate(['pages/usuarios/asignar-rol']);
+  }
+
   eliminar(id: string): void {
     Swal.fire({
       title: 'Eliminar Usuario',

@@ -32,4 +32,8 @@ export class CandidatosService {
   editar(id: string, elCandidato: Candidatos) {
     return this.http.put(`${environment.url_gateway}/candidatos/${id}`, elCandidato);
   }
+
+  asignarPartido(id: string, id_partido: string, elCandidato: Candidatos) {
+    return this.http.put(`${environment.url_gateway}/candidatos/${id}/partido/${id_partido}`, elCandidato);
+  }
 }

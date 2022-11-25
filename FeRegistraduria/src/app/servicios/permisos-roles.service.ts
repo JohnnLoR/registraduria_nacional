@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'
 import { environment } from '../../environments/environment';
 import { PermisosRoles } from '../modelos/permisos-roles.model';
+import { Usuarios } from '../modelos/usuarios.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +24,11 @@ export class PermisosRolesService {
     return this.http.get<PermisosRoles>(`${environment.url_gateway}/permisos-roles/${id}`);
   }
 
-  crear(elPermisoRol: PermisosRoles) {  /* , id_rol: string, id_permiso: string */
-    return this.http.post(`${environment.url_gateway}/permisos-roles`, elPermisoRol);  /* /rol/${id_rol}/permiso/${id_permiso}`, elPermisoRol */
+  crear(id_rol: string, id_permiso: string, elPermisoRol: PermisosRoles) {
+    return this.http.post(`${environment.url_gateway}/permisos-roles/rol/${id_rol}/permiso/${id_permiso}`, elPermisoRol);
   }
 
-  editar(id: string, elPermisoRol: PermisosRoles) { /*, id_rol: string, id_permiso: string*/
-    return this.http.put(`${environment.url_gateway}/permisos-roles/${id}`, elPermisoRol) /*/rol/${id_rol}/permiso/${id_permiso}*/
+  editar(id: string, id_rol: string, id_permiso: string, elPermisoRol: PermisosRoles) {
+    return this.http.put(`${environment.url_gateway}/permisos-roles/${id}/rol/${id_rol}/permiso/${id_permiso}`, elPermisoRol)
   }
 }

@@ -19,15 +19,20 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    console.log('aqui: ' + this.correo + ' contraseña ' + this.contrasena);
+    // console.log('aqui: ' + this.correo + ' contraseña ' + this.contrasena);
     let elUsuario: Usuarios = {
       correo: this.correo,
       contrasena: this.contrasena,
     };
     this.miServicioSeguridad.login(elUsuario).subscribe(
       data => {
-        this.router.navigate(['pages/dashboard']);
+        this.router.navigate(['/pages/layout/tabs']);
         this.miServicioSeguridad.guardarDatosSesion(data);
+        Swal.fire({
+          title: 'Inicio de Sesión!',
+          text: '¡Hola! ' + this.correo + '. ¡Haz Iniciado Sesión Exitósamente!',
+          icon: 'success',
+        });
       },
       error => {
           Swal.fire({

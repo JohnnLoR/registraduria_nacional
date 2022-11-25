@@ -2,6 +2,12 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
+    title: 'NOTICIAS',
+    // pathMatch: 'prefix',
+    icon: 'layout-outline',
+    link: '/pages/layout/tabs',
+  },
+  {
     title: 'SESION',
     icon: 'at-outline',
     children: [
@@ -14,7 +20,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Cerrar Sesión',
         icon: 'log-out-outline',
-        link: '/pages/seguridad/login',
+        link: '/pages/seguridad/logout',
         home: true,
       },
     ]
@@ -46,6 +52,37 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ]
   },
   {
+    title: 'REPORTES',
+    icon: 'book-outline',
+    children: [
+      {
+        title: 'Mesa Nax Inscritos',
+        icon: 'file-outline',
+        link: '/pages/reportes/max-inscritos',
+      },
+      {
+        title: 'Inscrito en Mesas',
+        icon: 'file-text-outline',
+        link: '/pages/reportes/candidato-mesas',
+      },
+      {
+        title: 'Inscritos en Mesa',
+        icon: 'file-text-outline',
+        link: '/pages/reportes/candidatos-mesa',
+      },
+      {
+        title: 'Total Votos Candidato',
+        icon: 'file-text-outline',
+        link: '/pages/reportes/conteo',
+      },
+      {
+        title: 'Candidato Más Votado',
+        icon: 'file-outline',
+        link: '/pages/reportes/ganador',
+      },
+    ]
+  },
+  {
     title: 'SEGURIDAD',
     icon: 'lock-outline',
     children: [
@@ -71,12 +108,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ]
   },
-  {
-    title: 'E-commerce',
-    icon: 'shopping-cart-outline',
-    link: '/pages/dashboard',
-    home: true,
-  },
+  // {
+  //   title: 'E-commerce',
+  //   icon: 'shopping-cart-outline',
+  //   link: '/pages/dashboard',
+  //   home: true,
+  // },
   // {
   //   title: 'IoT Dashboard',
   //   icon: 'home-outline',

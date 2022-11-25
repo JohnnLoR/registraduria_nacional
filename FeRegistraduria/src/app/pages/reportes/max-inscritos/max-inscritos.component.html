@@ -1,0 +1,19 @@
+<div class="col-12">
+    <nb-card>
+        <nb-card-header>
+            Mesa con Más Inscritos
+        </nb-card-header>
+        <table class="table">
+            <tr>
+                <th *ngFor="let columnaActual of nombresColumnas">{{columnaActual}}</th>
+            </tr>
+            <ng-container>
+                <tr>
+                    <td>{{elResultado.Mesa._id}}</td>
+                    <td>{{elResultado.Mesa.numero}}</td>
+                    <td>{{elResultado.Mesa.cantidad_inscritos}}</td>
+                </tr>
+            </ng-container>
+        </table>
+    </nb-card>
+</div>

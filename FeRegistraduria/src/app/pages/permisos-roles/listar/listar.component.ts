@@ -12,7 +12,7 @@ import { PermisosRolesService } from '../../../servicios/permisos-roles.service'
 export class ListarComponent implements OnInit {
 
   permisoRol: PermisosRoles[];
-  nombresColumnas: string[] = ['_Id', 'Rol', 'URL Permiso', 'Método', 'Acciones']
+  nombresColumnas: string[] = ['_Id', 'Rol', 'URL Permiso', 'Método', 'Acciones'];
 
   constructor(private miServicioPermisoRol: PermisosRolesService, private router: Router) { }
 
@@ -26,14 +26,13 @@ export class ListarComponent implements OnInit {
     });
   }
 
-  agregar(): void {  /* id_rol: string, id_permiso */
+  agregar(): void {
     console.log("Agregando Nuevo PermisoRol")
-    this.router.navigate(['pages/permisos-roles/crear'])  /* /rol/' + id_rol + '/permiso/' + id_permiso */
+    this.router.navigate(['pages/permisos-roles/crear']);
   }
-
-  editar(id: string): void { /*, id_rol: string, id_permiso: string*/
+  editar(id: string): void {
     console.log("Editando el PermisoRol: " + id)
-    this.router.navigate(['pages/permisos-roles/actualizar/' + id]); /*+ '/rol/' + id_rol + '/permiso/' + id_permiso*/
+    this.router.navigate(['pages/permisos-roles/actualizar/' + id]);
   }
 
   eliminar(id: string): void {
