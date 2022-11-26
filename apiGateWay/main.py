@@ -46,7 +46,7 @@ def create_token():
         user = response.json()
         expires = datetime.timedelta(seconds=60 * 60*24) #Un día en segundos sec*min*dia
         access_token = create_access_token(identity = user, expires_delta = expires)
-        return jsonify({"token": access_token, "user_id": user["_id"]})
+        return jsonify({"token": access_token, "user_id": user["_id"], "user_correo": user["correo"]}) #se añade el correo para alojarlo en el LocalStorage y mostrarlo en header
     else:
         return jsonify({"Message": "Correo, Seudónimo o Contraseña Incorrecto. ¡Intenta de Nuevo!!!"}), 401
 
