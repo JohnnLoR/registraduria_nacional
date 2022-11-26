@@ -1,0 +1,4 @@
+from .endpointsMesas import endpointsMesas
+from .endpointsCandidatos import endpointsCandidatos
+from .endpointsPartidos import endpointsPartidos
+from .endpointsResultados import endpointsResultados

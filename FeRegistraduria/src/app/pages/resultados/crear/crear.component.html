@@ -1,0 +1,68 @@
+<div class="col-lg-12">
+    <nb-card>
+        <nb-card-header *ngIf="modoCreacion">
+            Registrar Resultado
+        </nb-card-header>
+        <nb-card-header *ngIf="!modoCreacion">
+            Actualizar Resultado
+        </nb-card-header>
+        <nb-card-body>
+            <div class="row" *ngIf="!modoCreacion">
+                <div class="col-3">
+                    <label for="_id">ID Resultado</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [disabled]="!modoCreacion" [(ngModel)]="elResultado._id">
+                    <p *ngIf="intentoEnvio && elResultado._id==''">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <!-- <div class="row">
+                <div class="col-3">
+                    <label for="_id">Mesa</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [(ngModel)]="elResultado.mesa">
+                    <p *ngIf="intentoEnvio && elResultado.mesa==''">Requerido</p>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-3">
+                    <label for="_id">Mesa</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-control" [(ngModel)]="elResultado.mesa">
+                        <option value="" selected disabled>Seleccionar Mesa</option>
+                        <option *ngFor="let mesa of mesas" value="{{mesa._id}}">{{mesa.numero}}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <!-- <div class="row">
+                <div class="col-3">
+                    <label for="_id">Candidato</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [(ngModel)]="elResultado.candidato">
+                    <p *ngIf="intentoEnvio && elResultado.candidato==''">Requerido</p>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-3">
+                    <label for="_id">Candidato</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-control" [(ngModel)]="elResultado.candidato">
+                        <option value="" selected disabled>Seleccionar Candidato</option>
+                        <option *ngFor="let candidato of candidatos" value="{{candidato._id}}">{{candidato.nombre}}&nbsp;{{candidato.apellido}}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <button *ngIf="modoCreacion" class="btn btn-primary btn-block" (click)="agregar()">Registrar</button>
+                <button *ngIf="!modoCreacion" class="btn btn-primary btn-block" (click)="editar()">Actualizar</button>
+            </div>
+        </nb-card-body>
+    </nb-card>
+</div>

@@ -1,0 +1,56 @@
+<div class="col-lg-12">
+    <nb-card>
+        <nb-card-header *ngIf="modoCreacion">
+            Registrar Usuario
+        </nb-card-header>
+        <nb-card-header *ngIf="!modoCreacion">
+            Actualizar Usuario
+        </nb-card-header>
+        <nb-card-body>
+            <div class="row" *ngIf="!modoCreacion">
+                <div class="col-3">
+                    <label for="_id">ID Usuario</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [disabled]="!modoCreacion" [(ngModel)]="elUsuario._id">
+                    <p *ngIf="intentoEnvio && elUsuario._id==''">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label for="seudonimo">Seudónimo</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [(ngModel)]="elUsuario.seudonimo">
+                    <p *ngIf="intentoEnvio && elUsuario.seudonimo==''">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label for="correo">e-mail</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [(ngModel)]="elUsuario.correo">
+                    <p *ngIf="intentoEnvio && elUsuario.correo==''">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label for="contrasena">Contraseña</label>
+                </div>
+                <div class="col-9">
+                    <input type="password" class="form-control" [(ngModel)]="elUsuario.contrasena">
+                    <p *ngIf="intentoEnvio && elUsuario.contrasena==''">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <button *ngIf="modoCreacion" class="btn btn-primary btn-block" (click)="agregar()">Registrar</button>
+                <button *ngIf="!modoCreacion" class="btn btn-primary btn-block" (click)="editar()">Actualizar</button>
+            </div>
+        </nb-card-body>
+    </nb-card>
+</div>

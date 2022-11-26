@@ -1,0 +1,47 @@
+<div class="col-lg-12">
+    <nb-card>
+        <nb-card-header>
+            Candidatos Inscritos en una Mesa
+        </nb-card-header>
+        <nb-card-body>
+            <!-- <div class="row">
+                <div class="col-3">
+                    <label for="_id">Id Mesa</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" [(ngModel)]="elResultado._id">
+                    <p *ngIf="elResultado._id==''"></p>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-3">
+                    <label for="_id">Id Mesa</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-control" [(ngModel)]="elResultado._id">
+                        <option value="0" selected disabled>Seleccionar Mesa</option>
+                        <option *ngFor="let mesa of mesas" value="{{mesa._id}}">{{mesa.numero}}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <button class="btn btn-primary btn-block" (click)="candidatosMesa(elResultado._id)">Listar</button>
+            </div>
+        </nb-card-body>
+        <table class="table">
+            <tr>
+                <th *ngFor="let columnaActual of nombresColumnas">{{columnaActual}}</th>
+            </tr>
+            <ng-container *ngFor="let resultadoActual of resultados">
+                <tr>
+                    <td>{{resultadoActual._id}}</td>
+                    <td>{{resultadoActual.candidato.nombre}}</td>
+                    <td>{{resultadoActual.candidato.apellido}}</td>
+                    <td>{{resultadoActual.candidato.partido.nombre}}</td>
+                    <td>{{resultadoActual.mesa.numero}}</td>
+                </tr>
+            </ng-container>
+        </table>
+    </nb-card>
+</div>
