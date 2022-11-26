@@ -12,7 +12,7 @@ import { CandidatosService } from '../../../servicios/candidatos.service';
 export class ListarComponent implements OnInit {
 
   candidatos: Candidatos[];
-  nombresColumnas: string[] = ['_Id', 'Cedula', 'Nombres', 'Apellidos', 'Número de Resolución', /*'Partido',*/ 'Acciones'];
+  nombresColumnas: string[] = ['_Id', 'Cedula', 'Nombres', 'Apellidos', 'Número de Resolución', 'Partido', 'Acciones'];
 
   constructor(private miServicioCandidatos: CandidatosService, private router: Router) { }
 
@@ -22,7 +22,14 @@ export class ListarComponent implements OnInit {
 
   listar(): void {
     this.miServicioCandidatos.listar().subscribe(data => {
-      this.candidatos = data;
+      this.candidatos = data;      
+      for(let candidato in this.candidatos) {  /* For que permite listar los candidatos con sus partidos y que no se interrumpa el for del template por falta o nulidad de un registro de partido o asignación de partido al candidato */
+        if (this.candidatos[candidato]["partido"] == null) {
+          // console.log(this.candidatos[candidato]);
+          this.candidatos[candidato]["partido"] = "Sin Partido";
+        }
+      }
+      // console.log(this.candidatos);
     });
   }
 
