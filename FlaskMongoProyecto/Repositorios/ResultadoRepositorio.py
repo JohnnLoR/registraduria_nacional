@@ -26,7 +26,13 @@ class ResultadoRepositorio(InterfazRepositorio[Resultado]):
                     }
                 }
             }
-        pipeline = [query1]
+        
+        query2 = {
+                "$sort": {
+                    "Total_votos_candidato": -1
+                }
+            }
+        pipeline = [query1, query2]
         return self.queryAggregation(pipeline)
 
     def getCandidatoMasVotado(self):
