@@ -38,7 +38,7 @@ export class GanadorComponent implements OnInit {
   ganador(): void {
     this.miServicioReportes.ganador().subscribe(data => {
       this.elResultado = data[0];
-      console.log(this.elResultado)
+      // console.log(this.elResultado)
     });
   }
 }

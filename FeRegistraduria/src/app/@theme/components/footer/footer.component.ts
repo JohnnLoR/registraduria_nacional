@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
   template: `
     <span class="created-by">
-      Edites with ♥ by <b>JohnnLoR</b> Nov2023
+      Edited with ♥ by <b>JohnnLoR</b> Nov2023
     </span>
     <div class="sponsors">
           <img class="MinTIC" src="../../../../assets/images/logo-mision.png" alt="">

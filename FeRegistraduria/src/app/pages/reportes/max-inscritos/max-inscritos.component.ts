@@ -15,13 +15,9 @@ export class MaxInscritosComponent implements OnInit {
   nombresColumnas: string[] = ['Id Resultado', 'Mesa Número', 'Cantidad de Inscritos'];
 
   elResultado: ResultadosTemporal = {
-    Mesa: {
       _id: "",
       cantidad_inscritos: 0,
       numero: 0,
-    },
-    _id: "",
-    max: ""
     }
 
   constructor(private miServicioResultados: ReportesService) { }
@@ -33,15 +29,13 @@ export class MaxInscritosComponent implements OnInit {
   maxInscritos(): void {
     this.miServicioResultados.maxInscritos().subscribe(data => {
       this.elResultado = data[0];
-      console.log(this.elResultado)
+      // console.log(this.elResultado)
     });
   }
 }
 
 interface ResultadosTemporal{
   _id?: string;
-  Mesa?: Mesas;
-  numero?: string;
-  cantidad_inscritos?: string;
-  max?: string;
+  numero?: number;
+  cantidad_inscritos?: number;
 }

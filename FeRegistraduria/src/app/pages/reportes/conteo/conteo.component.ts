@@ -39,7 +39,7 @@ export class ConteoComponent implements OnInit {
   conteo(): void {
     this.miServicioReportes.conteo().subscribe(data => {
       this.resultados = data;
-      console.log(this.resultados)
+      // console.log(this.resultados)
     });
   }
 }
